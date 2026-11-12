@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b14">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="description" content="APEIRON NEXUS — a fail-closed certificate and trust-boundary layer for quantum-state and channel certification research.">
+  <meta property="og:title" content="APEIRON NEXUS · Verified Quantum Systems">
+  <meta property="og:description" content="Trust is not assumed. It is verified. A fail-closed certificate layer: unverified claims stay INCOMPLETE.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23070b14'/%3E%3Cpath d='M32 10 52 52H42L32 29 22 52H12z' fill='none' stroke='%2375e0dc' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>APEIRON NEXUS · Verified Quantum Systems</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#inspector">Skip to certificate inspector</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="APEIRON NEXUS home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="22" height="22"><path d="M16 4 27 27h-5.5L16 14.5 10.5 27H5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></span>
+        <span class="brand-text">APEIRON <b>NEXUS</b><small>VERIFIED QUANTUM SYSTEMS</small></span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#status">Status</a><a href="#inspector">Inspector</a><a href="#trust">Trust model</a><a href="#scope">Scope</a>
+      </nav>
+      <div class="top-meta"><span class="pulse" aria-hidden="true"></span><span class="hide-sm">RESEARCH BUILD</span><span class="version">v68.0.4</span></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow cyan">INDEPENDENT VERIFICATION · FAIL-CLOSED CERTIFICATES</div>
+          <h1>Trust is not assumed.<br><em>It is verified.</em></h1>
+          <p class="intro">APEIRON NEXUS is a research trust-boundary layer for quantum-state and channel certification. A producer may <i>claim</i> a result; only an independent, checkable proof can promote it to PASS. Everything else stays <b>INCOMPLETE</b>.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#inspector">Open certificate inspector <span aria-hidden="true">↓</span></a>
+            <a class="btn ghost" href="https://github.com/lianahovsepyan/apeiron-nexus" rel="noopener">View source on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <aside class="gate-card" aria-label="Verification gates, current build state">
+          <div class="gate-head"><span class="eyebrow">PASS REQUIRES ALL GATES</span><span class="tag amber">CURRENT BUILD</span></div>
+          <ol class="gates">
+            <li class="g ok"><span class="g-ico" aria-hidden="true">✓</span><div><b>Input binding</b><small>SHA-256 over canonical input bytes</small></div></li>
+            <li class="g ok"><span class="g-ico" aria-hidden="true">✓</span><div><b>Structural validity</b><small>Closed claim × proof-type allow-list</small></div></li>
+            <li class="g ok"><span class="g-ico" aria-hidden="true">✓</span><div><b>Witness semantics</b><small>Pivot count, kind, bounds, matrix shape</small></div></li>
+            <li class="g stop"><span class="g-ico" aria-hidden="true">!</span><div><b>Independent proof checker</b><small>Not implemented yet</small></div></li>
+          </ol>
+          <div class="gate-foot"><span>Resulting verdict</span><strong>INCOMPLETE</strong></div>
+        </aside>
+      </section>
+
+      <section class="status-grid" id="status" aria-label="System status">
+        <article class="panel">
+          <div class="panel-head"><span class="eyebrow">RUNTIME</span><span class="dot" id="runtime-dot"></span></div>
+          <div class="metric" id="runtime-state">INITIALIZING</div>
+          <p id="runtime-detail">Loading browser verification bridge…</p>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><span class="eyebrow">ENGINE VERSION</span><span class="tag">WASM</span></div>
+          <div class="metric mono" id="engine-version">—</div>
+          <p>Rust/WebAssembly bridge, built in CI from this repository.</p>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><span class="eyebrow">CERTIFICATION POLICY</span><span class="tag amber">FAIL-CLOSED</span></div>
+          <div class="metric">NO FALSE PASS</div>
+          <p>Unverified or unverifiable claims are never promoted.</p>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="vocab-title">
+        <div class="section-title"><div><div class="eyebrow">VERDICT VOCABULARY</div><h2 id="vocab-title">Seven explicit outcomes</h2></div><span class="tag" id="vocab-sync">STATIC LIST</span></div>
+        <ul class="vocab" id="vocab"></ul>
+      </section>
+
+      <section class="section" id="inspector" aria-labelledby="insp-title">
+        <div class="section-title"><div><div class="eyebrow">EVIDENCE WORKSPACE</div><h2 id="insp-title">Certificate inspector</h2></div><span class="tag">LOCAL · CLIENT SIDE · NOTHING UPLOADED</span></div>
+        <div class="panel inspector">
+          <p class="lead">Paste a certificate to run a <b>structural pre-check</b> in your browser. This mirrors a few of the Rust rules for preview only. It does <u>not</u> prove any mathematical claim, so the verdict is never PASS.</p>
+          <label class="sr-only" for="certificate-input">Certificate JSON</label>
+          <textarea id="certificate-input" spellcheck="false" autocomplete="off" placeholder='{"schema_version":"68.0.4","claim":"PSD","proof_type":"CHOLESKY_PIVOTS","input_hash":"sha256:…","witness":{…}}'></textarea>
+          <div class="inspector-actions">
+            <button id="inspect-button" type="button" class="btn primary">Inspect payload</button>
+            <button id="example-button" type="button" class="btn ghost">Load example</button>
+            <label class="btn ghost file">Open .json<input id="file-input" type="file" accept=".json,application/json"></label>
+            <button class="btn ghost" id="clear-button" type="button">Clear</button>
+            <span id="inspect-message" role="status" aria-live="polite">Waiting for input</span>
+          </div>
+          <div class="verdict" id="verdict" data-state="idle"><span class="verdict-state" id="verdict-state">INCOMPLETE</span><span id="verdict-text">No independent proof verification has been performed.</span></div>
+          <ul class="checks" id="checks" hidden></ul>
+          <details class="raw" id="raw" hidden><summary>Parsed payload</summary><pre id="inspection-details"></pre></details>
+        </div>
+      </section>
+
+      <section class="section" id="trust" aria-labelledby="trust-title">
+        <div class="eyebrow">TRUST ARCHITECTURE</div><h2 id="trust-title">Separate computation from proof.</h2>
+        <div class="architecture-grid">
+          <article class="panel"><span class="step">01</span><h3>Canonical input</h3><p>Exact decimal parsing and a length-prefixed canonical byte form. The SHA-256 of those bytes binds evidence to the exact request.</p></article>
+          <article class="panel"><span class="step">02</span><h3>Certificate producer</h3><p>Emits candidate witnesses. Its own status is recorded as a <i>producer claim</i> and is never accepted as proof.</p></article>
+          <article class="panel"><span class="step">03</span><h3>Semantic validation</h3><p>Only whitelisted claim × proof-type pairs are accepted, and each witness is checked against the matrix it claims to describe.</p></article>
+          <article class="panel"><span class="step">04</span><h3>Independent verifier</h3><p>PASS needs a separate checker whose evidence digest matches. When none exists, the system fails closed to INCOMPLETE.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="scope" aria-labelledby="scope-title">
+        <div class="eyebrow">HONEST SCOPE</div><h2 id="scope-title">What this build is, and is not.</h2>
+        <div class="scope-grid">
+          <article class="panel"><h3 class="ok-t">Implemented</h3>
+            <ul class="plain">
+              <li>Exact canonical decimal parser (fuzz-tested)</li>
+              <li>Canonical input bytes and SHA-256 input binding</li>
+              <li>Certificate model, canonical JSON, evidence digest</li>
+              <li>Closed claim × proof-type allow-list, witness semantics</li>
+              <li>Separation of producer claim and verified status</li>
+            </ul></article>
+          <article class="panel"><h3 class="warn-t">Not implemented yet</h3>
+            <ul class="plain">
+              <li>Verified interval arithmetic</li>
+              <li>A real independent proof checker</li>
+              <li>A numerical certification engine</li>
+              <li>Any mathematical PASS result</li>
+            </ul>
+            <p class="note">A structurally valid certificate is not a mathematically valid certificate. The evidence digest is a binding, not a proof.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>APEIRON NEXUS · v68.0.4 · pre-alpha research software</span>
+      <a href="https://github.com/lianahovsepyan/apeiron-nexus" rel="noopener">github.com/lianahovsepyan/apeiron-nexus</a>
+    </footer>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/apeiron-math",
+  "crates/apeiron-wasm",
+]
+
+[workspace.package]
+version = "69.0.0"
+edition = "2021"
+license = "MIT"
